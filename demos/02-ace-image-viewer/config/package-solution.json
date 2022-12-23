@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "ace-image-viewer-client-side-solution",
+    "id": "d853d27a-095f-448a-b7ed-535dd81bc7a2",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "AceImageViewer description"
+      },
+      "longDescription": {
+        "default": "AceImageViewer description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "ace-image-viewer Feature",
+        "description": "The feature that activates elements of the ace-image-viewer solution.",
+        "id": "d5681524-bf5b-4a43-87a2-3123b8ff2394",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/ace-image-viewer.sppkg"
+  }
+}

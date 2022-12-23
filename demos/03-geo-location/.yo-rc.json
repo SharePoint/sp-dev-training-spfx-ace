@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "16.18.1",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.4.1"
+    },
+    "version": "1.16.1",
+    "libraryName": "ace-campus-shuttle",
+    "libraryId": "58cd8e0f-12be-4ff2-85ba-6b3688dd349e",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "AceCampusShuttle",
+    "solutionShortDescription": "AceCampusShuttle description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "adaptiveCardExtension",
+    "aceTemplateType": "PrimaryText"
+  }
+}
