@@ -44,7 +44,7 @@ export class NewItemQuickView extends BaseAdaptiveCardView<
         this.setState({ listItems: await fetchListItems(this.context, this.properties.listId) });
 
         // remove quickview
-        this.quickViewNavigator.pop(false);
+        this.quickViewNavigator.pop();
       })();
     }
   }
