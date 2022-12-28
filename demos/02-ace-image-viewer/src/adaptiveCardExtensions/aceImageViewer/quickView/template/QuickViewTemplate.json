@@ -1,0 +1,41 @@
+{
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.2",
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "Image",
+      "url": "${img_src}"
+    },
+    {
+      "type": "TextBlock",
+      "text": "${rover.name} rover image #${id}",
+      "horizontalAlignment": "Center"
+    },
+    {
+      "type": "TextBlock",
+      "text": "Photo Details",
+      "spacing": "Medium",
+      "separator": true,
+      "size": "Large",
+      "weight": "Bolder"
+    },
+    {
+      "type": "FactSet",
+      "facts": [
+        {
+          "title": "Rover:",
+          "value": "${rover.name}"
+        },
+        {
+          "title": "Camera:",
+          "value": "${camera.full_name}"
+        },
+        {
+          "title": "Date taken:",
+          "value": "${earth_date} (sol ${sol})"
+        }
+      ]
+    }
+  ]
+}

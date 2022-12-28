@@ -1,0 +1,32 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/adaptive-card-extension-manifest.schema.json",
+  "id": "3cf67601-1615-4cec-a516-abde786fdb72",
+  "alias": "AceImageViewerAdaptiveCardExtension",
+  "componentType": "AdaptiveCardExtension",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["Dashboard"],
+  "preconfiguredEntries": [{
+    "groupId": "bd067b1e-3ad5-4d5d-a5fe-505f07d7f59c", // Dashboard
+    "group": { "default": "Dashboard" },
+    "title": { "default": "AceImageViewer" },
+    "description": { "default": "AceImageViewer description" },
+    "officeFabricIconFontName": "SharePointLogo",
+    "cardSize": "Large",
+    "properties": {
+      "title": "AceImageViewer",
+      "description": "AceImageViewer description",
+      "iconProperty": "", // Default to sharepointlogo
+      "nasa_api_key": "DEMO_KEY",
+      "nasa_rover": "curiosity",
+      "nasa_sol": 1000
+    }
+  }]
+}

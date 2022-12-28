@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "ace-campus-shuttle-client-side-solution",
+    "id": "58cd8e0f-12be-4ff2-85ba-6b3688dd349e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.16.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "AceCampusShuttle description"
+      },
+      "longDescription": {
+        "default": "AceCampusShuttle description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "ace-campus-shuttle Feature",
+        "description": "The feature that activates elements of the ace-campus-shuttle solution.",
+        "id": "d6f9a30b-b3db-48f7-ad47-23a99e1f3d94",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/ace-campus-shuttle.sppkg"
+  }
+}
