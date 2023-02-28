@@ -27,16 +27,20 @@ export const fetchListItems = async (spContext: AdaptiveCardExtensionContext, li
     SPHttpClient.configurations.v1
   )).json();
 
-  return Promise.resolve(response.value.map(
-    (listItem: any, index: number) => {
-      return <IListItem> {
-        id: listItem.ID,
-        title: listItem.Title,
-        description: listItem.Description,
-        index: index
-      };
-    }
-  ));
+  if (response.value?.length > 0) {
+    return Promise.resolve(response.value.map(
+      (listItem: any, index: number) => {
+        return <IListItem>{
+          id: listItem.ID,
+          title: listItem.Title,
+          description: listItem.Description,
+          index: index
+        };
+      }
+    ));
+  } else {
+    return Promise.resolve([]);
+  }
 }
 
 const getItemEntityType = async (spContext: AdaptiveCardExtensionContext, listId: string): Promise<string> => {
@@ -54,27 +58,27 @@ export const addListItem = async (
   listItemTitle: string,
   listItemDescription: string): Promise<void> => {
 
-    // get the entty type of list item
-    const entityListItemType = await getItemEntityType(spContext, listId);
+  // get the entity type of list item
+  const entityListItemType = await getItemEntityType(spContext, listId);
 
-    // create item to send to SP REST API
-    const newListItem: any = {
-      '@odata.type': entityListItemType,
-      Title: listItemTitle,
-      Description: listItemDescription
-    };
+  // create item to send to SP REST API
+  const newListItem: any = {
+    '@odata.type': entityListItemType,
+    Title: listItemTitle,
+    Description: listItemDescription
+  };
 
-    await spContext.spHttpClient.post(
-      `${spContext.pageContext.web.absoluteUrl}/_api/web/lists/GetById(id='${listId}')/items`,
-      SPHttpClient.configurations.v1,
-      {
-        headers: {
-          'ACCEPT': 'application/json; odata.metadata=none',
-          'CONTENT-TYPE': 'application/json'
-        },
-        body: JSON.stringify(newListItem)
-      }
-    );
+  await spContext.spHttpClient.post(
+    `${spContext.pageContext.web.absoluteUrl}/_api/web/lists/GetById(id='${listId}')/items`,
+    SPHttpClient.configurations.v1,
+    {
+      headers: {
+        'ACCEPT': 'application/json; odata.metadata=none',
+        'CONTENT-TYPE': 'application/json'
+      },
+      body: JSON.stringify(newListItem)
+    }
+  );
 
-    return Promise.resolve();
+  return Promise.resolve();
 }

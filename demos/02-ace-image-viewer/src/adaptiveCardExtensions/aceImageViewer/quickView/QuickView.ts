@@ -1,7 +1,19 @@
-import { ISPFxAdaptiveCard, BaseAdaptiveCardView } from '@microsoft/sp-adaptive-card-extension-base';
+import {
+  ISPFxAdaptiveCard,
+  BaseAdaptiveCardView
+} from '@microsoft/sp-adaptive-card-extension-base';
 // import * as strings from 'AceImageViewerAdaptiveCardExtensionStrings';
-import { IAceImageViewerAdaptiveCardExtensionProps, IAceImageViewerAdaptiveCardExtensionState } from '../AceImageViewerAdaptiveCardExtension';
+import {
+  IAceImageViewerAdaptiveCardExtensionProps,
+  IAceImageViewerAdaptiveCardExtensionState
+} from '../AceImageViewerAdaptiveCardExtension';
+
 import { IMarsRoverPhoto } from '../nasa.service';
+
+// export interface IQuickViewData {
+//   subTitle: string;
+//   title: string;
+// }
 
 export class QuickView extends BaseAdaptiveCardView<
   IAceImageViewerAdaptiveCardExtensionProps,

@@ -56,20 +56,22 @@ export class CardView extends BaseImageCardView<IAceImageViewerAdaptiveCardExten
     } else {
       const rover = `${this.properties.nasa_rover.substring(0, 1).toUpperCase()}${this.properties.nasa_rover.substring(1)}`;
       const roverImage = this.state.roverPhotos[this.state.currentIndex];
-      return {
-        primaryText: `Photos from the Mars rover ${rover} on sol ${this.properties.mars_sol}`,
-        imageUrl: roverImage.img_src,
-        imageAltText: `Image ${roverImage.id} taken on ${roverImage.earth_date} from ${rover}'s ${roverImage.camera.full_name} camera.`,
-        title: this.properties.title
-      };
+      if (roverImage) {
+        return {
+          primaryText: `Photos from the Mars rover ${rover} on sol ${this.properties.mars_sol}`,
+          imageUrl: roverImage.img_src,
+          imageAltText: `Image ${roverImage.id} taken on ${roverImage.earth_date} from ${rover}'s ${roverImage.camera.full_name} camera.`,
+          title: this.properties.title
+        };
+      } else {
+        return {
+          primaryText: `Please refresh the page to reload the rover photos`,
+          imageUrl: '',
+          imageAltText: '',
+          title: this.properties.title
+        }
+      }
     }
-  }
-
-  public onAction(action: IActionArguments): void {
-    if (action.type !== 'Submit') { return; }
-
-    let currentIndex = this.state.currentIndex;
-    this.setState({ currentIndex: currentIndex + Number(action.id) });
   }
 
   public get onCardSelection(): IQuickViewCardAction | IExternalLinkCardAction | undefined {
@@ -80,4 +82,12 @@ export class CardView extends BaseImageCardView<IAceImageViewerAdaptiveCardExten
       }
     };
   }
+
+  public onAction(action: IActionArguments): void {
+    if (action.type !== 'Submit') { return; }
+
+    let currentIndex = this.state.currentIndex;
+    this.setState({ currentIndex: currentIndex + Number(action.id) });
+  }
+
 }

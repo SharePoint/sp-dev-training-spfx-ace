@@ -3,10 +3,8 @@ import {
   BaseAdaptiveCardView,
   IActionArguments
 } from '@microsoft/sp-adaptive-card-extension-base';
-import {
-  ISharePointRestAdaptiveCardExtensionProps,
-  ISharePointRestAdaptiveCardExtensionState
-} from '../SharePointRestAdaptiveCardExtension';
+// import * as strings from 'SharePointRestAdaptiveCardExtensionStrings';
+import { ISharePointRestAdaptiveCardExtensionProps, ISharePointRestAdaptiveCardExtensionState } from '../SharePointRestAdaptiveCardExtension';
 
 import { IListItem } from '../sp.service';
 
@@ -38,4 +36,5 @@ export class QuickView extends BaseAdaptiveCardView<
     let currentIndex = this.state.currentIndex;
     this.setState({ currentIndex: currentIndex + Number(action.id) });
   }
+
 }
