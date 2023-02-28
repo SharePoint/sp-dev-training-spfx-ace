@@ -5,6 +5,7 @@ import {
   IQuickViewCardAction,
   ICardButton
 } from '@microsoft/sp-adaptive-card-extension-base';
+// import * as strings from 'SharePointRestAdaptiveCardExtensionStrings';
 import {
   ISharePointRestAdaptiveCardExtensionProps,
   ISharePointRestAdaptiveCardExtensionState,

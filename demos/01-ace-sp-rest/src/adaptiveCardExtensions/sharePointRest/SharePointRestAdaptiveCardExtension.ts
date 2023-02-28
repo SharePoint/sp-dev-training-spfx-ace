@@ -2,8 +2,8 @@ import { IPropertyPaneConfiguration } from '@microsoft/sp-property-pane';
 import { BaseAdaptiveCardExtension } from '@microsoft/sp-adaptive-card-extension-base';
 import { CardView } from './cardView/CardView';
 import { QuickView } from './quickView/QuickView';
-import { SharePointRestPropertyPane } from './SharePointRestPropertyPane';
 import { NewItemQuickView } from './quickView/NewItemQuickView';
+import { SharePointRestPropertyPane } from './SharePointRestPropertyPane';
 
 import {
   fetchListItems,

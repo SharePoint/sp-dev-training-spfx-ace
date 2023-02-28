@@ -96,4 +96,6 @@ export class CardView extends BasePrimaryTextCardView<ICampusShuttleAdaptiveCard
       title: this.properties.title
     };
   }
+
+  public get on
 }

@@ -3,7 +3,6 @@ import {
   BaseAdaptiveCardView,
   IActionArguments
 } from '@microsoft/sp-adaptive-card-extension-base';
-
 import {
   ISharePointRestAdaptiveCardExtensionProps,
   ISharePointRestAdaptiveCardExtensionState,
@@ -44,7 +43,7 @@ export class NewItemQuickView extends BaseAdaptiveCardView<
         this.setState({ listItems: await fetchListItems(this.context, this.properties.listId) });
 
         // remove quickview
-        this.quickViewNavigator.pop();
+        this.quickViewNavigator.close();
       })();
     }
   }

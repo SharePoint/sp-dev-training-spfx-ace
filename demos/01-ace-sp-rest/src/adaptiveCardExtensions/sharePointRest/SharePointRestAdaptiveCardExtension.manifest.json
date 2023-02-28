@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/adaptive-card-extension-manifest.schema.json",
-  "id": "6ef79c42-24bd-48bd-9b36-a99c3fee4b36",
+  "id": "ea9c2ed1-6fd5-46e1-9196-87ca953f6314",
   "alias": "SharePointRestAdaptiveCardExtension",
   "componentType": "AdaptiveCardExtension",
 

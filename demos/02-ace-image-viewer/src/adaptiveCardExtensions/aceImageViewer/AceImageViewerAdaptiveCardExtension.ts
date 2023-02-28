@@ -3,8 +3,8 @@ import { BaseAdaptiveCardExtension } from '@microsoft/sp-adaptive-card-extension
 import { CardView } from './cardView/CardView';
 import { QuickView } from './quickView/QuickView';
 import { AceImageViewerPropertyPane } from './AceImageViewerPropertyPane';
-import { isEmpty } from '@microsoft/sp-lodash-subset'
 
+import { isEmpty } from '@microsoft/sp-lodash-subset'
 import {
   fetchRoverPhotos,
   IMarsRoverPhoto
@@ -72,7 +72,7 @@ export default class AceImageViewerAdaptiveCardExtension extends BaseAdaptiveCar
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    return this._deferredPropertyPane?.getPropertyPaneConfiguration();
+    return this._deferredPropertyPane?.getPropertyPaneConfiguration(this.properties.nasa_rover);
   }
 
   protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {

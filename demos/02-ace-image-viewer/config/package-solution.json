@@ -2,7 +2,7 @@
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
     "name": "ace-image-viewer-client-side-solution",
-    "id": "d853d27a-095f-448a-b7ed-535dd81bc7a2",
+    "id": "778732d4-dab0-4e43-9ed1-10698778b0b2",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
@@ -29,7 +29,7 @@
       {
         "title": "ace-image-viewer Feature",
         "description": "The feature that activates elements of the ace-image-viewer solution.",
-        "id": "d5681524-bf5b-4a43-87a2-3123b8ff2394",
+        "id": "0d3bb780-06f3-4018-ad13-a82bdfa0da0d",
         "version": "1.0.0.0"
       }
     ]

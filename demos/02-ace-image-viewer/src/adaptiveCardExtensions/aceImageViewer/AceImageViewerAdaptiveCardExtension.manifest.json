@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/adaptive-card-extension-manifest.schema.json",
-  "id": "3cf67601-1615-4cec-a516-abde786fdb72",
+  "id": "dae449cf-55b6-4c3f-8347-04305f91dd2a",
   "alias": "AceImageViewerAdaptiveCardExtension",
   "componentType": "AdaptiveCardExtension",
 
