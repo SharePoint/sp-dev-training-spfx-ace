@@ -38,7 +38,7 @@ export class UpdateTrip extends BaseAdaptiveCardView<
 
     switch (action.id) {
       case 'cancel':
-        // TODO QuickView cancelTrip
+        this.quickViewNavigator.push(QUICK_VIEW_CANCEL_TRIP_REGISTRY_ID);
         break
       case 'pickup':
         // update current item status

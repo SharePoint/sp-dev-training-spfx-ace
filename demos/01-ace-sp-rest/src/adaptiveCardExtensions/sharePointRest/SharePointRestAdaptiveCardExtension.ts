@@ -3,13 +3,12 @@ import { BaseAdaptiveCardExtension } from '@microsoft/sp-adaptive-card-extension
 import { CardView } from './cardView/CardView';
 import { QuickView } from './quickView/QuickView';
 import { SharePointRestPropertyPane } from './SharePointRestPropertyPane';
-import { NewItemQuickView } from './quickView/NewItemQuickView';
-
 import {
   fetchListItems,
   fetchListTitle,
   IListItem
 } from './sp.service';
+import { NewItemQuickView } from './quickView/NewItemQuickView';
 
 export interface ISharePointRestAdaptiveCardExtensionProps {
   title: string;

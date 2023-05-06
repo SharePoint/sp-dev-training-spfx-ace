@@ -26,7 +26,6 @@ export interface ISetDestinationData {
   trip: IListItem;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const LOCATIONS = require('../assets/campus_locations.json');
 
 export class SetDestination extends BaseAdaptiveCardView<
@@ -60,19 +59,15 @@ export class SetDestination extends BaseAdaptiveCardView<
     } else if (action.type === 'Submit' && action.id === 'save') {
       // else, check if picked location from dropdown & save it
       if (action.data.knownDestinationSelection) {
-        // get the location selected
         currentTrip.DestinationLocation = <ILocation>{
           latitude: Number(action.data.knownDestinationSelection.split(',')[0]),
           longitude: Number(action.data.knownDestinationSelection.split(',')[1])
         };
 
-        // find the selected location from master list...
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const selectedLocation = LOCATIONS.filter((knownLocation: any) => (
+       const selectedLocation = LOCATIONS.filter((knownLocation: any) => (
           knownLocation.latitude === (currentTrip.DestinationLocation as ILocation).latitude
           && knownLocation.longitude === (currentTrip.DestinationLocation as ILocation).longitude
         ))[0];
-        // ...and store the name of the location
         currentTrip.DestinationName = selectedLocation.title;
       }
       this.setState({ currentTrip: currentTrip });

@@ -100,10 +100,7 @@ export const upsertListItem = async (spContext: AdaptiveCardExtensionContext, li
     `${listApiUrl}/items(${listItem.Id})`,
     SPHttpClient.configurations.v1,
     {
-      headers: {
-        'IF-MATCH': '*',
-        'X-HTTP-METHOD': 'MERGE'
-      },
+      headers: { 'IF-MATCH': '*', 'X-HTTP-METHOD': 'MERGE' },
       body: JSON.stringify(<IListItem>{
         Title: listItem.Title,
         Status: listItem.Status,
@@ -127,11 +124,7 @@ export const deleteListItem = async (spContext: AdaptiveCardExtensionContext, li
     `${listApiUrl}/items(${listItemId})`,
     SPHttpClient.configurations.v1,
     {
-      headers:
-      {
-        'IF-MATCH': '*',
-        'X-HTTP-METHOD': 'DELETE'
-      }
+      headers: { 'IF-MATCH': '*', 'X-HTTP-METHOD': 'DELETE' }
     }
   );
 }

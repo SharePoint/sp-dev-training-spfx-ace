@@ -5,11 +5,12 @@ import {
   IQuickViewCardAction,
   ICardButton
 } from '@microsoft/sp-adaptive-card-extension-base';
+// import * as strings from 'SharePointRestAdaptiveCardExtensionStrings';
 import {
   ISharePointRestAdaptiveCardExtensionProps,
   ISharePointRestAdaptiveCardExtensionState,
   QUICK_VIEW_REGISTRY_ID,
-  NEW_ITEM_QUICK_VIEW_REGISTRY_ID
+  NEW_ITEM_QUICK_VIEW_REGISTRY_ID    // << add
 } from '../SharePointRestAdaptiveCardExtension';
 
 export class CardView extends BaseBasicCardView<ISharePointRestAdaptiveCardExtensionProps, ISharePointRestAdaptiveCardExtensionState> {
@@ -44,4 +45,5 @@ export class CardView extends BaseBasicCardView<ISharePointRestAdaptiveCardExten
       }
     };
   }
+
 }

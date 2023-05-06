@@ -5,15 +5,15 @@
     "nodeVersion": "16.18.1",
     "sdksVersions": {
       "@microsoft/microsoft-graph-client": "3.0.2",
-      "@microsoft/teams-js": "2.4.1"
+      "@microsoft/teams-js": "2.9.1"
     },
-    "version": "1.16.1",
-    "libraryName": "01-ace-sp-rest",
-    "libraryId": "86dd91ed-6bd9-4b76-a1e5-1b1f044fa320",
+    "version": "1.17.1",
+    "libraryName": "ace-share-point-rest",
+    "libraryId": "2410765d-2565-43d6-99a0-895156cb1cfe",
     "environment": "spo",
     "packageManager": "npm",
-    "solutionName": "01-ace-sp-rest",
-    "solutionShortDescription": "01-ace-sp-rest description",
+    "solutionName": "AceSharePointRest",
+    "solutionShortDescription": "AceSharePointRest description",
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "componentType": "adaptiveCardExtension",

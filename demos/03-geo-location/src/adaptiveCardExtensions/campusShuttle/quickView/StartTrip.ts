@@ -12,10 +12,7 @@ import {
   QUICK_VIEW_SAVE_TRIP_REGISTRY_ID
 } from '../CampusShuttleAdaptiveCardExtension';
 
-import {
-  IListItem,
-  upsertListItem
-} from '../sp.service';
+import { IListItem, upsertListItem } from '../sp.service';
 
 export interface IStartTripData {
   title: string;

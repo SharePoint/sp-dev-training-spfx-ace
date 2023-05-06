@@ -3,6 +3,11 @@ import { BaseAdaptiveCardExtension } from '@microsoft/sp-adaptive-card-extension
 import { CardView } from './cardView/CardView';
 import { CampusShuttlePropertyPane } from './CampusShuttlePropertyPane';
 import {
+  IListItem,
+  fetchListItem,
+  STATUS_AVAILABLE
+} from './sp.service';
+import {
   StartTrip,
   SetOrigin,
   SetDestination,
@@ -10,12 +15,6 @@ import {
   UpdateTrip,
   ConfirmationQuickView
 } from './quickView';
-
-import {
-  IListItem,
-  fetchListItem,
-  STATUS_AVAILABLE
-} from './sp.service';
 
 export interface ICampusShuttleAdaptiveCardExtensionProps {
   title: string;
