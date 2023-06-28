@@ -1,7 +1,7 @@
 import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
-  PropertyPaneDropdown
+  PropertyPaneDropdown    // << add
 } from '@microsoft/sp-property-pane';
 import * as strings from 'AceImageViewerAdaptiveCardExtensionStrings';
 

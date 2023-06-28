@@ -11,7 +11,6 @@ import {
   QUICK_VIEW_UPDATE_TRIP_REGISTRY_ID,
   QUICK_VIEW_COMPLETE_TRIP_REGISTRY_ID
 } from '../CampusShuttleAdaptiveCardExtension';
-
 import {
   ILocation,
   STATUS_AVAILABLE,
@@ -75,6 +74,7 @@ export class CardView extends BasePrimaryTextCardView<ICampusShuttleAdaptiveCard
               parameters: { view: QUICK_VIEW_COMPLETE_TRIP_REGISTRY_ID }
             }
           }
+
         ];
         break;
       default:
@@ -96,4 +96,5 @@ export class CardView extends BasePrimaryTextCardView<ICampusShuttleAdaptiveCard
       title: this.properties.title
     };
   }
+
 }

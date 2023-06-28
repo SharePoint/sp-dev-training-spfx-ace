@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/adaptive-card-extension-manifest.schema.json",
-  "id": "6ef79c42-24bd-48bd-9b36-a99c3fee4b36",
+  "id": "609e387c-07bd-46b1-80ff-e7ef40269147",
   "alias": "SharePointRestAdaptiveCardExtension",
   "componentType": "AdaptiveCardExtension",
 
@@ -18,7 +18,7 @@
     "group": { "default": "Dashboard" },
     "title": { "default": "SharePoint REST" },
     "description": { "default": "SharePoint REST description" },
-    "officeFabricIconFontName": "SharePointLogo",
+    "iconImageUrl": "https://res.cdn.office.net/files/fabric-cdn-prod_20230308.001/assets/brand-icons/product-monoline/svg/vivaconnections_32x1.svg",
     "properties": {
       "title": "SharePoint REST"
     },

@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/adaptive-card-extension-manifest.schema.json",
-  "id": "14a1db9b-c737-46cf-bb56-02a5a0752e03",
+  "id": "50b971a0-deba-4bf2-854a-6be6a7646db6",
   "alias": "CampusShuttleAdaptiveCardExtension",
   "componentType": "AdaptiveCardExtension",
 
@@ -18,7 +18,7 @@
     "group": { "default": "Dashboard" },
     "title": { "default": "Campus Shuttle" },
     "description": { "default": "Campus Shuttle description" },
-    "officeFabricIconFontName": "SharePointLogo",
+    "iconImageUrl": "https://res.cdn.office.net/files/fabric-cdn-prod_20230308.001/assets/brand-icons/product-monoline/svg/vivaconnections_32x1.svg",
     "properties": {
       "title": "Campus Shuttle"
     },

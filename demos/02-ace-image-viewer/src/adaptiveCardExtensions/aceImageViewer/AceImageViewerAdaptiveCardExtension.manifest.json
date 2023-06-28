@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/adaptive-card-extension-manifest.schema.json",
-  "id": "3cf67601-1615-4cec-a516-abde786fdb72",
+  "id": "5a79b68e-95c5-44b8-abcf-c8007fd39c86",
   "alias": "AceImageViewerAdaptiveCardExtension",
   "componentType": "AdaptiveCardExtension",
 
@@ -18,12 +18,12 @@
     "group": { "default": "Dashboard" },
     "title": { "default": "AceImageViewer" },
     "description": { "default": "AceImageViewer description" },
-    "officeFabricIconFontName": "SharePointLogo",
+    "iconImageUrl": "https://res.cdn.office.net/files/fabric-cdn-prod_20230308.001/assets/brand-icons/product-monoline/svg/vivaconnections_32x1.svg",
     "cardSize": "Large",
     "properties": {
       "title": "AceImageViewer",
       "description": "AceImageViewer description",
-      "iconProperty": "", // Default to sharepointlogo
+      "iconProperty": "", // Default to MicrosoftLogo.png
       "nasa_api_key": "DEMO_KEY",
       "nasa_rover": "curiosity",
       "nasa_sol": 1000
