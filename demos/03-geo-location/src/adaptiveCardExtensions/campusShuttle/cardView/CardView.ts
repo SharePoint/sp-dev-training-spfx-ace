@@ -1,7 +1,8 @@
 import {
-  BasePrimaryTextCardView,
-  IPrimaryTextCardParameters,
-  ICardButton
+  BaseComponentsCardView,
+  ComponentsCardViewParameters,
+  PrimaryTextCardView,
+  CardViewActionsFooterConfiguration
 } from '@microsoft/sp-adaptive-card-extension-base';
 import * as strings from 'CampusShuttleAdaptiveCardExtensionStrings';
 import {
@@ -18,21 +19,29 @@ import {
   STATUS_HIRED
 } from '../sp.service';
 
-export class CardView extends BasePrimaryTextCardView<ICampusShuttleAdaptiveCardExtensionProps, ICampusShuttleAdaptiveCardExtensionState> {
-  public get cardButtons(): [ICardButton] | [ICardButton, ICardButton] | undefined {
+export class CardView extends BaseComponentsCardView<
+  ICampusShuttleAdaptiveCardExtensionProps,
+  ICampusShuttleAdaptiveCardExtensionState,
+  ComponentsCardViewParameters
+> {
+  public get cardViewParameters(): ComponentsCardViewParameters {
+    let footer: CardViewActionsFooterConfiguration;
+
     switch (this.state.currentTrip.Status) {
       case STATUS_AVAILABLE:
-        return [{
+        footer = {
+          componentName: 'cardButton',
           title: 'Book a Trip',
           action: {
             type: 'QuickView',
             parameters: { view: QUICK_VIEW_START_TRIP_REGISTRY_ID }
           }
-        }];
+        };
         break;
       case STATUS_ENROUTE:
-        return [
+        footer = [
           {
+            componentName: 'cardButton',
             title: 'View pickup location',
             action: {
               type: 'VivaAction.ShowLocation',
@@ -45,6 +54,7 @@ export class CardView extends BasePrimaryTextCardView<ICampusShuttleAdaptiveCard
             }
           },
           {
+            componentName: 'cardButton',
             title: 'Update Trip',
             action: {
               type: 'QuickView',
@@ -54,8 +64,9 @@ export class CardView extends BasePrimaryTextCardView<ICampusShuttleAdaptiveCard
         ];
         break;
       case STATUS_HIRED:
-        return [
+        footer = [
           {
+            componentName: 'cardButton',
             title: 'View dropoff location',
             action: {
               type: 'VivaAction.ShowLocation',
@@ -68,33 +79,40 @@ export class CardView extends BasePrimaryTextCardView<ICampusShuttleAdaptiveCard
             }
           },
           {
+            componentName: 'cardButton',
             title: 'Complete Trip',
             action: {
               type: 'QuickView',
               parameters: { view: QUICK_VIEW_COMPLETE_TRIP_REGISTRY_ID }
             }
           }
-
         ];
         break;
       default:
-        return undefined;
+        footer = undefined;
         break;
     }
-  }
 
-  public get data(): IPrimaryTextCardParameters {
-    return {
-      primaryText: strings.PrimaryText,
-      description: (this.state.currentTrip.Status === STATUS_AVAILABLE)
-        ? `available for hire`
-        : (this.state.currentTrip.Status === STATUS_ENROUTE)
-          ? `Booked - ${STATUS_ENROUTE} to pickup...`
-          : (this.state.currentTrip.DestinationName)
-            ? `Hired - driving passenger to ${this.state.currentTrip.DestinationName}...`
-            : `Hired - driving passenger to destination...`,
-      title: this.properties.title
-    };
+    return PrimaryTextCardView({
+      cardBar: {
+        componentName: 'cardBar',
+        title: this.properties.title
+      },
+      header: {
+        componentName: 'text',
+        text: strings.PrimaryText
+      },
+      body: {
+        componentName: 'text',
+        text: (this.state.currentTrip.Status === STATUS_AVAILABLE)
+          ? `available for hire`
+          : (this.state.currentTrip.Status === STATUS_ENROUTE)
+            ? `Booked - ${STATUS_ENROUTE} to pickup...`
+            : (this.state.currentTrip.DestinationName)
+              ? `Hired - driving passenger to ${this.state.currentTrip.DestinationName}...`
+              : `Hired - driving passenger to destination...`
+      },
+      footer
+    });
   }
-
 }

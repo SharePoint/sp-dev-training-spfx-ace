@@ -1,15 +1,13 @@
 {
   "@microsoft/generator-sharepoint": {
+    "useGulp": false,
     "plusBeta": false,
     "isCreatingSolution": true,
-    "nodeVersion": "16.18.1",
-    "sdksVersions": {
-      "@microsoft/microsoft-graph-client": "3.0.2",
-      "@microsoft/teams-js": "2.9.1"
-    },
-    "version": "1.17.1",
+    "nodeVersion": "22.19.0",
+    "sdksVersions": {},
+    "version": "1.23.0",
     "libraryName": "ace-image-viewer",
-    "libraryId": "a08a0220-abeb-49c1-bcb6-29c14114dda9",
+    "libraryId": "aeb894de-2fa2-4f2c-8500-3ab2a80fc20f",
     "environment": "spo",
     "packageManager": "npm",
     "solutionName": "AceImageViewer",
@@ -17,6 +15,6 @@
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "componentType": "adaptiveCardExtension",
-    "aceTemplateType": "Image"
+    "aceTemplateType": "Generic"
   }
 }

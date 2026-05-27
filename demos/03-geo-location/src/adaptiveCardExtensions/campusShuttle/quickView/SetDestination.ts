@@ -52,19 +52,19 @@ export class SetDestination extends BaseAdaptiveCardView<
     // if picked a location on the map...
     if (action.type === 'VivaAction.GetLocation') {
       currentTrip.DestinationLocation = <ILocation>{
-        latitude: action.location.latitude,
-        longitude: action.location.longitude
+        latitude: action.location?.latitude,
+        longitude: action.location?.longitude
       };
       this.setState({ currentTrip: currentTrip });
     } else if (action.type === 'Submit' && action.id === 'save') {
-      // else, check if picked location from dropdown & save it
+      // else, check if picked location from dropdown and save it
       if (action.data.knownDestinationSelection) {
         currentTrip.DestinationLocation = <ILocation>{
           latitude: Number(action.data.knownDestinationSelection.split(',')[0]),
           longitude: Number(action.data.knownDestinationSelection.split(',')[1])
         };
 
-       const selectedLocation = LOCATIONS.filter((knownLocation: any) => (
+        const selectedLocation = LOCATIONS.filter((knownLocation: any) => (
           knownLocation.latitude === (currentTrip.DestinationLocation as ILocation).latitude
           && knownLocation.longitude === (currentTrip.DestinationLocation as ILocation).longitude
         ))[0];

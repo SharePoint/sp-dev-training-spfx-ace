@@ -39,8 +39,8 @@ export class SetOrigin extends BaseAdaptiveCardView<
 
       const currentTrip = this.state.currentTrip;
       currentTrip.OriginLocation = <ILocation> {
-        latitude: action.location.latitude,
-        longitude: action.location.longitude
+        latitude: action.location?.latitude,
+        longitude: action.location?.longitude
       };
 
       this.setState({ currentTrip: currentTrip });

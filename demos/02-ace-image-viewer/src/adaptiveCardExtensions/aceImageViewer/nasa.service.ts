@@ -1,41 +1,53 @@
 import { AdaptiveCardExtensionContext } from '@microsoft/sp-adaptive-card-extension-base';
 import { HttpClient } from '@microsoft/sp-http';
 
-export interface IMarsRoverCamera {
-  id: number;
-  name: string;
-  rover_id: number;
-  full_name: string;
+export interface INasaImage {
+  nasaId: string;
+  title: string;
+  description: string;
+  dateCreated: string;
+  center: string;
+  keywords: string[];
+  thumbnailUrl: string;
+  imageUrl: string;
 }
 
-export interface IMarsRoverVehicle {
-  id: number;
-  name: string;
-  landing_date: Date;
-  launch_date: Date;
-  status: string;
+interface INasaSearchItem {
+  data: {
+    nasa_id: string;
+    title: string;
+    description: string;
+    date_created: string;
+    center: string;
+    keywords?: string[];
+  }[];
+  links?: { href: string }[];
 }
 
-export interface IMarsRoverPhoto {
-  id: number;
-  sol: number;
-  camera: IMarsRoverCamera;
-  rover: IMarsRoverVehicle;
-  img_src: string;
-  earth_date: Date;
-}
-
-export const fetchRoverPhotos = async (
+export const searchImages = async (
   spContext: AdaptiveCardExtensionContext,
-  apiKey: string,
-  rover: string,
-  mars_sol: number): Promise<IMarsRoverPhoto[]> => {
-  const results: { photos: IMarsRoverPhoto[] } = await (
+  query: string): Promise<INasaImage[]> => {
+  const results: { collection: { items: INasaSearchItem[] } } = await (
     await spContext.httpClient.get(
-      `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?sol=${mars_sol}&page=1&api_key=${apiKey}`,
+      `https://images-api.nasa.gov/search?q=${encodeURIComponent(query)}&media_type=image`,
       HttpClient.configurations.v1
     )
   ).json();
 
-  return Promise.resolve(results.photos);
+  return results.collection.items
+    .filter((item) => item.links && item.links.length > 0)
+    .map((item) => {
+      const data = item.data[0];
+      const thumbnailUrl = item.links![0].href;
+      return {
+        nasaId: data.nasa_id,
+        title: data.title,
+        description: data.description,
+        dateCreated: data.date_created,
+        center: data.center,
+        keywords: data.keywords || [],
+        thumbnailUrl: thumbnailUrl,
+        imageUrl: thumbnailUrl.replace('~thumb.jpg', '~orig.jpg')
+      };
+    });
 }

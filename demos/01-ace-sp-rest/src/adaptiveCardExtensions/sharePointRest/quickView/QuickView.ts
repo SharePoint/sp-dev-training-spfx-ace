@@ -1,10 +1,14 @@
 import {
   ISPFxAdaptiveCard,
-  BaseAdaptiveCardView,
-  IActionArguments    // << add
+  BaseAdaptiveCardQuickView,
+  IActionArguments
 } from '@microsoft/sp-adaptive-card-extension-base';
 // import * as strings from 'SharePointRestAdaptiveCardExtensionStrings';
-import { ISharePointRestAdaptiveCardExtensionProps, ISharePointRestAdaptiveCardExtensionState } from '../SharePointRestAdaptiveCardExtension';
+import template from './template/QuickViewTemplate.json';
+import {
+  ISharePointRestAdaptiveCardExtensionProps,
+  ISharePointRestAdaptiveCardExtensionState
+} from '../SharePointRestAdaptiveCardExtension';
 
 import { IListItem } from '../sp.service';
 
@@ -13,7 +17,7 @@ export interface IQuickViewData extends IListItem {
   nextEnabled: boolean;
 }
 
-export class QuickView extends BaseAdaptiveCardView<
+export class QuickView extends BaseAdaptiveCardQuickView<
   ISharePointRestAdaptiveCardExtensionProps,
   ISharePointRestAdaptiveCardExtensionState,
   IQuickViewData
@@ -26,15 +30,14 @@ export class QuickView extends BaseAdaptiveCardView<
     };
   }
 
-  public get template(): ISPFxAdaptiveCard {
-    return require('./template/QuickViewTemplate.json');
-  }
-
   public onAction(action: IActionArguments): void {
-    if (action.type !== 'Submit') { return ;}
+    if (action.type !== 'Submit') { return; }
 
     let currentIndex = this.state.currentIndex;
     this.setState({ currentIndex: currentIndex + Number(action.id) });
   }
 
+  public get template(): ISPFxAdaptiveCard {
+    return template as ISPFxAdaptiveCard;
+  }
 }

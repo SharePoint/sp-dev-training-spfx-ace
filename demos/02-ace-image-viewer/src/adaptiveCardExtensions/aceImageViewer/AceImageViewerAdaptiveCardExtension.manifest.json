@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx/adaptive-card-extension-manifest.schema.json",
-  "id": "5a79b68e-95c5-44b8-abcf-c8007fd39c86",
+  "id": "25d01166-db62-4d10-84ae-b031cb8df3ab",
   "alias": "AceImageViewerAdaptiveCardExtension",
   "componentType": "AdaptiveCardExtension",
 
@@ -18,15 +18,11 @@
     "group": { "default": "Dashboard" },
     "title": { "default": "AceImageViewer" },
     "description": { "default": "AceImageViewer description" },
-    "iconImageUrl": "https://res.cdn.office.net/files/fabric-cdn-prod_20230308.001/assets/brand-icons/product-monoline/svg/vivaconnections_32x1.svg",
-    "cardSize": "Large",
+    "iconImageUrl": "https://res.cdn.office.net/files/fabric-cdn-prod_20240610.001/assets/brand-icons/product-monoline/svg/vivaconnections_32x1.svg",
     "properties": {
       "title": "AceImageViewer",
-      "description": "AceImageViewer description",
-      "iconProperty": "", // Default to MicrosoftLogo.png
-      "nasa_api_key": "DEMO_KEY",
-      "nasa_rover": "curiosity",
-      "nasa_sol": 1000
-    }
+      "searchQuery": "mars rover"
+    },
+    "cardSize": "Medium"
   }]
 }

@@ -1,14 +1,15 @@
-import { IPropertyPaneConfiguration } from '@microsoft/sp-property-pane';
+import type { IPropertyPaneConfiguration } from '@microsoft/sp-property-pane';
 import { BaseAdaptiveCardExtension } from '@microsoft/sp-adaptive-card-extension-base';
 import { CardView } from './cardView/CardView';
 import { QuickView } from './quickView/QuickView';
 import { SharePointRestPropertyPane } from './SharePointRestPropertyPane';
+import { NewItemQuickView } from './quickView/NewItemQuickView';
+
 import {
   fetchListItems,
   fetchListTitle,
   IListItem
 } from './sp.service';
-import { NewItemQuickView } from './quickView/NewItemQuickView';
 
 export interface ISharePointRestAdaptiveCardExtensionProps {
   title: string;
@@ -38,7 +39,9 @@ export default class SharePointRestAdaptiveCardExtension extends BaseAdaptiveCar
       listItems: []
     };
 
+    // registers the card view to be shown in a dashboard
     this.cardNavigator.register(CARD_VIEW_REGISTRY_ID, () => new CardView());
+    // registers the quick view to open via QuickView action
     this.quickViewNavigator.register(QUICK_VIEW_REGISTRY_ID, () => new QuickView());
     this.quickViewNavigator.register(NEW_ITEM_QUICK_VIEW_REGISTRY_ID, () => new NewItemQuickView());
 
@@ -68,10 +71,6 @@ export default class SharePointRestAdaptiveCardExtension extends BaseAdaptiveCar
     return CARD_VIEW_REGISTRY_ID;
   }
 
-  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    return this._deferredPropertyPane?.getPropertyPaneConfiguration();
-  }
-
   protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
     if (propertyPath === 'listId' && newValue !== oldValue) {
       if (newValue) {
@@ -86,4 +85,7 @@ export default class SharePointRestAdaptiveCardExtension extends BaseAdaptiveCar
     }
   }
 
+  protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
+    return this._deferredPropertyPane?.getPropertyPaneConfiguration() ?? super.getPropertyPaneConfiguration();
+  }
 }
