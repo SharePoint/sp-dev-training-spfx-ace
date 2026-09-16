@@ -1,76 +1,103 @@
 import {
-  BaseImageCardView,
-  IImageCardParameters,
+  BaseComponentsCardView,
+  ComponentsCardViewParameters,
+  ImageCardView,
+  ICardButtonParameters,
+  CardViewActionsFooterConfiguration,
+  IActionArguments,
   IExternalLinkCardAction,
-  IQuickViewCardAction,
-  ICardButton,
-  IActionArguments  // << add
+  IQuickViewCardAction
 } from '@microsoft/sp-adaptive-card-extension-base';
 // import * as strings from 'AceImageViewerAdaptiveCardExtensionStrings';
-import { IAceImageViewerAdaptiveCardExtensionProps, IAceImageViewerAdaptiveCardExtensionState, QUICK_VIEW_REGISTRY_ID } from '../AceImageViewerAdaptiveCardExtension';
+import {
+  IAceImageViewerAdaptiveCardExtensionProps,
+  IAceImageViewerAdaptiveCardExtensionState,
+  QUICK_VIEW_REGISTRY_ID
+} from '../AceImageViewerAdaptiveCardExtension';
 
-export class CardView extends BaseImageCardView<IAceImageViewerAdaptiveCardExtensionProps, IAceImageViewerAdaptiveCardExtensionState> {
-  /**
-   * Buttons will not be visible if card size is 'Medium' with Image Card View.
-   * It will support up to two buttons for 'Large' card size.
-   */
-  public get cardButtons(): [ICardButton] | [ICardButton, ICardButton] | undefined {
-    const cardButtons: ICardButton[] = [];
+export class CardView extends BaseComponentsCardView<
+  IAceImageViewerAdaptiveCardExtensionProps,
+  IAceImageViewerAdaptiveCardExtensionState,
+  ComponentsCardViewParameters
+> {
+  public get cardViewParameters(): ComponentsCardViewParameters {
+    const previousButton: ICardButtonParameters = {
+      componentName: 'cardButton',
+      title: '<',
+      id: '-1',
+      action: { type: 'Submit', parameters: {} }
+    };
+    const nextButton: ICardButtonParameters = {
+      componentName: 'cardButton',
+      title: '>',
+      id: '1',
+      action: { type: 'Submit', parameters: {} }
+    };
 
-    if (this.state.currentIndex !== 0) {
-      cardButtons.push(<ICardButton>{
-        title: '<',
-        id: '-1',
-        action: {
-          type: 'Submit',
-          parameters: {}
-        }
+    const showPrevious = this.state.currentIndex !== 0;
+    const showNext = this.state.currentIndex !== (this.state.images.length - 1);
+
+    const footer: CardViewActionsFooterConfiguration = (showPrevious && showNext)
+      ? [previousButton, nextButton]
+      : (showPrevious)
+        ? previousButton
+        : (showNext)
+          ? nextButton
+          : undefined;
+
+    if (!this.properties.searchQuery) {
+      return ImageCardView({
+        cardBar: {
+          componentName: 'cardBar',
+          title: this.properties.title
+        },
+        header: {
+          componentName: 'text',
+          text: `Enter a search term to display NASA images...`
+        },
+        image: {
+          url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Tharsis_and_Valles_Marineris_-_Mars_Orbiter_Mission_%2830055660701%29.png/240px-Tharsis_and_Valles_Marineris_-_Mars_Orbiter_Mission_%2830055660701%29.png',
+          altText: `Enter a search term to display NASA images...`
+        },
+        footer
       });
     }
-    if (this.state.currentIndex !== (this.state.roverPhotos.length - 1)) {
-      cardButtons.push(<ICardButton>{
-        title: '>',
-        id: '1',
-        action: {
-          type: 'Submit',
-          parameters: {}
-        }
+
+    const currentImage = this.state.images[this.state.currentIndex];
+
+    if (!currentImage) {
+      return ImageCardView({
+        cardBar: {
+          componentName: 'cardBar',
+          title: this.properties.title
+        },
+        header: {
+          componentName: 'text',
+          text: `Please refresh the page to reload the images`
+        },
+        image: {
+          url: '',
+          altText: ''
+        },
+        footer
       });
     }
 
-    return (cardButtons.length === 0)
-      ? undefined
-      : (cardButtons.length === 1)
-        ? [cardButtons[0]]
-        : [cardButtons[0], cardButtons[1]];
-  }
-  public get data(): IImageCardParameters {
-    if (!this.properties.nasa_rover || !this.properties.mars_sol) {
-      return {
-        primaryText: `Select Mars rover & sol to display photos...`,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Tharsis_and_Valles_Marineris_-_Mars_Orbiter_Mission_%2830055660701%29.png/240px-Tharsis_and_Valles_Marineris_-_Mars_Orbiter_Mission_%2830055660701%29.png',
-        imageAltText: `Select Mars rover & sol to display photos...`,
+    return ImageCardView({
+      cardBar: {
+        componentName: 'cardBar',
         title: this.properties.title
-      }
-    } else {
-      const rover = `${this.properties.nasa_rover.substring(0, 1).toUpperCase()}${this.properties.nasa_rover.substring(1)}`;
-      const roverImage = this.state.roverPhotos[this.state.currentIndex];
-      if (roverImage) {
-        return {
-          primaryText: `Photos from the Mars rover ${rover} on sol ${this.properties.mars_sol}`,
-          imageUrl: roverImage.img_src,
-          imageAltText: `Image ${roverImage.id} taken on ${roverImage.earth_date} from ${rover}'s ${roverImage.camera.full_name} camera.`,
-          title: this.properties.title
-        };
-      } else {
-        return {
-          primaryText: `Please refresh the page to reload the rover photos`,
-          imageUrl: '',
-          imageAltText: '',
-          title: this.properties.title
-        }
-      }
-    }
+      },
+      header: {
+        componentName: 'text',
+        text: `${this.state.currentIndex + 1} of ${this.state.images.length}: ${currentImage.title}`
+      },
+      image: {
+        url: currentImage.thumbnailUrl,
+        altText: currentImage.title
+      },
+      footer
+    });
   }
 
   public get onCardSelection(): IQuickViewCardAction | IExternalLinkCardAction | undefined {
@@ -88,5 +115,4 @@ export class CardView extends BaseImageCardView<IAceImageViewerAdaptiveCardExten
     let currentIndex = this.state.currentIndex;
     this.setState({ currentIndex: currentIndex + Number(action.id) });
   }
-
 }

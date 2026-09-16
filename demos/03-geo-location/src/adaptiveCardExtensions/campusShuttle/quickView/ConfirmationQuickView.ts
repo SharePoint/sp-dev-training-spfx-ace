@@ -29,7 +29,7 @@ export class ConfirmationQuickView extends BaseAdaptiveCardView<
 
   public get data(): IConfirmationQuickViewData {
     return {
-      title: `${this.confirmType.substring(0,1).toUpperCase()}${this.confirmType.substring(1,this.confirmType.length)} Trip`,
+      title: `${this.confirmType.substring(0, 1).toUpperCase()}${this.confirmType.substring(1, this.confirmType.length)} Trip`,
       description: `Are you sure you want to ${this.confirmType} the trip?`
     };
   }

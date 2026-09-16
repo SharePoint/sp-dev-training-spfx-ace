@@ -1,12 +1,14 @@
-import { IPropertyPaneConfiguration } from '@microsoft/sp-property-pane';
+import type { IPropertyPaneConfiguration } from '@microsoft/sp-property-pane';
 import { BaseAdaptiveCardExtension } from '@microsoft/sp-adaptive-card-extension-base';
 import { CardView } from './cardView/CardView';
 import { CampusShuttlePropertyPane } from './CampusShuttlePropertyPane';
+
 import {
   IListItem,
   fetchListItem,
   STATUS_AVAILABLE
 } from './sp.service';
+
 import {
   StartTrip,
   SetOrigin,
@@ -48,6 +50,7 @@ export default class CampusShuttleAdaptiveCardExtension extends BaseAdaptiveCard
       }
     };
 
+    // registers the card view to be shown in a dashboard
     this.cardNavigator.register(CARD_VIEW_REGISTRY_ID, () => new CardView());
     this.quickViewNavigator.register(QUICK_VIEW_START_TRIP_REGISTRY_ID, () => new StartTrip());
     this.quickViewNavigator.register(QUICK_VIEW_SET_ORIGIN_REGISTRY_ID, () => new SetOrigin());
@@ -82,7 +85,7 @@ export default class CampusShuttleAdaptiveCardExtension extends BaseAdaptiveCard
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    return this._deferredPropertyPane?.getPropertyPaneConfiguration();
+    return this._deferredPropertyPane?.getPropertyPaneConfiguration() ?? super.getPropertyPaneConfiguration();
   }
 
   protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {

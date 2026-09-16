@@ -1,18 +1,23 @@
-import { ISPFxAdaptiveCard, BaseAdaptiveCardView } from '@microsoft/sp-adaptive-card-extension-base';
+import { ISPFxAdaptiveCard, BaseAdaptiveCardQuickView } from '@microsoft/sp-adaptive-card-extension-base';
 // import * as strings from 'AceImageViewerAdaptiveCardExtensionStrings';
-import { IAceImageViewerAdaptiveCardExtensionProps, IAceImageViewerAdaptiveCardExtensionState } from '../AceImageViewerAdaptiveCardExtension';
-import { IMarsRoverPhoto } from '../nasa.service';
+import template from './template/QuickViewTemplate.json';
+import {
+  IAceImageViewerAdaptiveCardExtensionProps,
+  IAceImageViewerAdaptiveCardExtensionState
+} from '../AceImageViewerAdaptiveCardExtension';
 
-export class QuickView extends BaseAdaptiveCardView<
+import { INasaImage } from '../nasa.service';
+
+export class QuickView extends BaseAdaptiveCardQuickView<
   IAceImageViewerAdaptiveCardExtensionProps,
   IAceImageViewerAdaptiveCardExtensionState,
-  IMarsRoverPhoto
+  INasaImage
 > {
-  public get data(): IMarsRoverPhoto {
-    return this.state.roverPhotos[this.state.currentIndex];
+  public get data(): INasaImage {
+    return this.state.images[this.state.currentIndex];
   }
 
   public get template(): ISPFxAdaptiveCard {
-    return require('./template/QuickViewTemplate.json');
+    return template as ISPFxAdaptiveCard;
   }
 }

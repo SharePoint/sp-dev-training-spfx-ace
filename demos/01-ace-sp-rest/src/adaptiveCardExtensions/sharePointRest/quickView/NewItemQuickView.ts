@@ -17,11 +17,11 @@ export interface INewItemQuickView { }
 export class NewItemQuickView extends BaseAdaptiveCardView<
   ISharePointRestAdaptiveCardExtensionProps,
   ISharePointRestAdaptiveCardExtensionState,
-  NewItemQuickView
+  INewItemQuickView
 > {
 
-  public get data(): NewItemQuickView {
-    return undefined;
+  public get data(): INewItemQuickView {
+    return {};
   }
 
   public get template(): ISPFxAdaptiveCard {

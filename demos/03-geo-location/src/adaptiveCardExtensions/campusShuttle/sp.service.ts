@@ -31,7 +31,7 @@ export const fetchListItem = async (spContext: AdaptiveCardExtensionContext, lis
     SPHttpClient.configurations.v1
   )).json();
 
-  if (response.value.length === 0) { return Promise.resolve(undefined); }
+  if (response.value.length === 0) { return Promise.resolve(<IListItem>{ Title: '', Status: '' }); }
 
   const convertedTrip = response.value[0];
 

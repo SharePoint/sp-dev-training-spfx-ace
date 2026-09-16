@@ -1,15 +1,13 @@
 {
   "@microsoft/generator-sharepoint": {
+    "useGulp": false,
     "plusBeta": false,
     "isCreatingSolution": true,
-    "nodeVersion": "16.18.1",
-    "sdksVersions": {
-      "@microsoft/microsoft-graph-client": "3.0.2",
-      "@microsoft/teams-js": "2.9.1"
-    },
-    "version": "1.17.1",
+    "nodeVersion": "22.19.0",
+    "sdksVersions": {},
+    "version": "1.23.0",
     "libraryName": "ace-share-point-rest",
-    "libraryId": "2410765d-2565-43d6-99a0-895156cb1cfe",
+    "libraryId": "7adc5adb-77af-498a-b3e2-ed0f7ca7f471",
     "environment": "spo",
     "packageManager": "npm",
     "solutionName": "AceSharePointRest",
@@ -17,6 +15,6 @@
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "componentType": "adaptiveCardExtension",
-    "aceTemplateType": "Basic"
+    "aceTemplateType": "Generic"
   }
 }

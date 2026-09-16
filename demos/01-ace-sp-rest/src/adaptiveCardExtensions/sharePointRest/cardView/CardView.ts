@@ -1,40 +1,46 @@
 import {
-  BaseBasicCardView,
-  IBasicCardParameters,
+  BaseComponentsCardView,
+  ComponentsCardViewParameters,
+  BasicCardView,
   IExternalLinkCardAction,
-  IQuickViewCardAction,
-  ICardButton
+  IQuickViewCardAction
 } from '@microsoft/sp-adaptive-card-extension-base';
 // import * as strings from 'SharePointRestAdaptiveCardExtensionStrings';
 import {
   ISharePointRestAdaptiveCardExtensionProps,
   ISharePointRestAdaptiveCardExtensionState,
   QUICK_VIEW_REGISTRY_ID,
-  NEW_ITEM_QUICK_VIEW_REGISTRY_ID    // << add
+  NEW_ITEM_QUICK_VIEW_REGISTRY_ID
 } from '../SharePointRestAdaptiveCardExtension';
 
-export class CardView extends BaseBasicCardView<ISharePointRestAdaptiveCardExtensionProps, ISharePointRestAdaptiveCardExtensionState> {
-  public get cardButtons(): [ICardButton] | [ICardButton, ICardButton] | undefined {
-    if (!this.properties.listId) {
-      return undefined;
-    } else {
-      return [{
+export class CardView extends BaseComponentsCardView<
+  ISharePointRestAdaptiveCardExtensionProps,
+  ISharePointRestAdaptiveCardExtensionState,
+  ComponentsCardViewParameters
+> {
+  public get cardViewParameters(): ComponentsCardViewParameters {
+    return BasicCardView({
+      cardBar: {
+        componentName: 'cardBar',
+        title: this.properties.title
+      },
+      header: {
+        componentName: 'text',
+        text: (this.state.listTitle)
+          ? `View items in the '${this.state.listTitle}' list`
+          : `Missing list ID`
+      },
+      footer: (!this.properties.listId)
+        ? undefined
+        : {
+          componentName: 'cardButton',
           title: 'Add item',
           action: {
             type: 'QuickView',
             parameters: { view: NEW_ITEM_QUICK_VIEW_REGISTRY_ID }
           }
-        }];
-    }
-  }
-
-  public get data(): IBasicCardParameters {
-    return {
-      title: this.properties.title,
-      primaryText: (this.state.listTitle)
-        ? `View items in the '${this.state.listTitle}' list`
-        : `Missing list ID`,
-    };
+        }
+    });
   }
 
   public get onCardSelection(): IQuickViewCardAction | IExternalLinkCardAction | undefined {
@@ -45,5 +51,4 @@ export class CardView extends BaseBasicCardView<ISharePointRestAdaptiveCardExten
       }
     };
   }
-
 }

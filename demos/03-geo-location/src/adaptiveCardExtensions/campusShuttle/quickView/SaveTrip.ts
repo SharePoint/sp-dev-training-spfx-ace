@@ -2,7 +2,7 @@ import {
   BaseAdaptiveCardView,
   IActionArguments,
   ISPFxAdaptiveCard
- } from '@microsoft/sp-adaptive-card-extension-base';
+} from '@microsoft/sp-adaptive-card-extension-base';
 import {
   ICampusShuttleAdaptiveCardExtensionProps,
   ICampusShuttleAdaptiveCardExtensionState

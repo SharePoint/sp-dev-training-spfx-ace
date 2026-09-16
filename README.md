@@ -37,6 +37,7 @@ The lab for this module is available in multiple units within the associated Mic
 
 | Version | Date              | Comments                                         |
 | ------- | ----------------- | ------------------------------------------------ |
+| 1.3     | May 25, 2026      | FY2026Q4 content refresh; update to SPFx v1.23.0 |
 | 1.2     | May 5, 2023       | FY2023Q4 content refresh; update to SPFx v1.17.1 |
 | 1.1     | February 28, 2023 | FY2023Q3 content refresh; update to SPFx v1.16.1 |
 | 1.0     | December 2022     | Initial release                                  |

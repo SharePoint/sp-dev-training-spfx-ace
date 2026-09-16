@@ -5,35 +5,43 @@
   "body": [
     {
       "type": "Image",
-      "url": "${img_src}"
+      "url": "${imageUrl}"
     },
     {
       "type": "TextBlock",
-      "text": "${rover.name} rover image #${id}",
-      "horizontalAlignment": "Center"
+      "text": "${title}",
+      "wrap": true,
+      "horizontalAlignment": "Center",
+      "weight": "Bolder"
     },
     {
       "type": "TextBlock",
-      "text": "Photo Details",
+      "text": "Image Details",
       "spacing": "Medium",
       "separator": true,
       "size": "Large",
       "weight": "Bolder"
     },
     {
+      "type": "TextBlock",
+      "text": "${description}",
+      "wrap": true,
+      "spacing": "Small"
+    },
+    {
       "type": "FactSet",
       "facts": [
         {
-          "title": "Rover:",
-          "value": "${rover.name}"
+          "title": "NASA ID:",
+          "value": "${nasaId}"
         },
         {
-          "title": "Camera:",
-          "value": "${camera.full_name}"
+          "title": "Center:",
+          "value": "${center}"
         },
         {
-          "title": "Date taken:",
-          "value": "${earth_date} (sol ${sol})"
+          "title": "Date created:",
+          "value": "${dateCreated}"
         }
       ]
     }
